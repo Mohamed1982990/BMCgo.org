@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BMC | تواصل معنا</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="app.js"></script>
+</head>
+<body data-page="contact">
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="logo.svg" alt="BMC logo" class="logo">
+      <span class="brand-text" data-i18n="brand">Best Medical Community (BMC)</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a data-i18n="nav_home" href="index.html">الصفحة الرئيسية</a></li>
+        <li><a data-i18n="nav_services" href="services.html">الخدمات المهنية</a></li>
+        <li><a data-i18n="nav_ai_transform" href="ai-transformation.html">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+        <li><a data-i18n="nav_protocols" href="protocols.html">البروتوكولات الطبية</a></li>
+        <li><a data-i18n="nav_ai_healthcare" href="ai-healthcare.html">الذكاء الاصطناعي في الطب</a></li>
+        <li><a data-i18n="nav_blog" href="blog.html">المدونة</a></li>
+        <li><a data-i18n="nav_contact" href="contact.html" class="active">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button id="langToggle" class="btn secondary">EN</button>
+      <button id="themeToggle" class="btn secondary">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1 data-i18n="contact_title">تواصل معنا</h1>
+      <p class="muted" data-i18n="contact_sub">نسعد بخدمتك — أرسل طلبك أو راسلنا مباشرة.</p>
+    </section>
+
+    <section class="grid-2">
+      <form class="form" id="contactForm">
+        <div class="grid-2">
+          <label>
+            <span data-i18n="name">الاسم الكامل</span>
+            <input required name="name" type="text" />
+          </label>
+          <label>
+            <span data-i18n="email">البريد الإلكتروني</span>
+            <input required name="email" type="email" />
+          </label>
+        </div>
+        <label>
+          <span data-i18n="phone">رقم الجوال</span>
+          <input name="phone" type="tel" />
+        </label>
+        <label>
+          <span data-i18n="service_type">نوع الخدمة</span>
+          <select name="service">
+            <option data-i18n="svc_cv_title">تصميم السير الذاتية والخطابات المهنية</option>
+            <option data-i18n="svc_protocols_title">إعداد البروتوكولات والسياسات الطبية</option>
+            <option data-i18n="svc_consult_title">الاستشارات المهنية</option>
+            <option data-i18n="svc_ai_title">تطوير المؤسسات بالذكاء الاصطناعي</option>
+            <option data-i18n="other">أخرى</option>
+          </select>
+        </label>
+        <label>
+          <span data-i18n="message">رسالتك</span>
+          <textarea name="message" rows="6"></textarea>
+        </label>
+        <div class="row">
+          <button class="btn primary" type="submit" data-i18n="send">إرسال</button>
+          <button class="btn outline" type="reset" data-i18n="reset">إعادة ضبط</button>
+        </div>
+        <p id="formStatus" class="muted" aria-live="polite"></p>
+      </form>
+
+      <aside class="card">
+        <h3 data-i18n="direct_contact">تواصل مباشر</h3>
+        <ul class="list-plain">
+          <li><a href="https://wa.me/249906933335" target="_blank" rel="noopener">WhatsApp: +249 90 693 3335</a></li>
+          <li><a href="mailto:contact@bmc-group.org">contact@bmc-group.org</a></li>
+        </ul>
+        <h3 data-i18n="customer_reviews">تقييمات العملاء</h3>
+        <ul class="list-plain">
+          <li data-i18n="r1">★★★★★ تنظيم احترافي وسريع الاستجابة.</li>
+          <li data-i18n="r2">★★★★★ جودة محتوى وسياسات قابلة للتطبيق.</li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <img src="logo.svg" alt="" class="logo small" />
+        <p class="muted" data-i18n="footer_msg">BMC — وثائق مهنية، بروتوكولات طبية، وتحول ذكي.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_links">روابط</h4>
+        <ul class="list-plain">
+          <li><a href="index.html" data-i18n="nav_home">الصفحة الرئيسية</a></li>
+          <li><a href="services.html" data-i18n="nav_services">الخدمات المهنية</a></li>
+          <li><a href="ai-transformation.html" data-i18n="nav_ai_transform">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+          <li><a href="blog.html" data-i18n="nav_blog">المدونة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">التواصل</h4>
+        <ul class="list-plain">
+          <li><a href="https://wa.me/249906933335" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contact@bmc-group.org">contact@bmc-group.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> BMC. All rights reserved.</small>
+    </div>
+    <a class="wa-fab" href="https://wa.me/249906933335" target="_blank" aria-label="WhatsApp">🟢</a>
+  </footer>
+</body>
+</html>

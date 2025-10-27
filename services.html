@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BMC | الخدمات المهنية</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="app.js"></script>
+</head>
+<body data-page="services">
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="logo.svg" alt="BMC logo" class="logo">
+      <span class="brand-text" data-i18n="brand">Best Medical Community (BMC)</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a data-i18n="nav_home" href="index.html">الصفحة الرئيسية</a></li>
+        <li><a data-i18n="nav_services" href="services.html" class="active">الخدمات المهنية</a></li>
+        <li><a data-i18n="nav_ai_transform" href="ai-transformation.html">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+        <li><a data-i18n="nav_protocols" href="protocols.html">البروتوكولات الطبية</a></li>
+        <li><a data-i18n="nav_ai_healthcare" href="ai-healthcare.html">الذكاء الاصطناعي في الطب</a></li>
+        <li><a data-i18n="nav_blog" href="blog.html">المدونة</a></li>
+        <li><a data-i18n="nav_contact" href="contact.html">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button id="langToggle" class="btn secondary">EN</button>
+      <button id="themeToggle" class="btn secondary">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1 data-i18n="services_title">الخدمات المهنية</h1>
+      <p class="muted" data-i18n="services_sub">حلول عملية لتطوير المسار المهني للأطباء والكوادر الصحية.</p>
+    </section>
+
+    <section>
+      <div class="responsive-table" role="region" aria-labelledby="svc-table-caption">
+        <div id="svc-table-caption" class="sr-only" data-i18n="services_table_caption">جدول الخدمات المهنية</div>
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="service">الخدمة</th>
+              <th data-i18n="description">الوصف</th>
+              <th data-i18n="order">طريقة الطلب</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="svc_cv_title">تصميم السير الذاتية والخطابات المهنية</td>
+              <td data-i18n="svc_cv_desc">إعداد سيرة ذاتية وخطابات توصية احترافية للأطباء والكوادر الصحية</td>
+              <td>
+                <a class="btn small" href="https://wa.me/249906933335" target="_blank" rel="noopener" data-i18n="order_whatsapp">واتساب</a>
+                <a class="btn small outline" href="mailto:contact@bmc-group.org">Email</a>
+              </td>
+            </tr>
+            <tr>
+              <td data-i18n="svc_protocols_title">إعداد البروتوكولات والسياسات الطبية</td>
+              <td data-i18n="svc_protocols_desc">تطوير بروتوكولات لجميع الأقسام وفق معايير منظمة الصحة العالمية</td>
+              <td><a class="btn small" href="protocols.html" data-i18n="more">المزيد</a></td>
+            </tr>
+            <tr>
+              <td data-i18n="svc_consult_title">الاستشارات المهنية</td>
+              <td data-i18n="svc_consult_desc">دعم الكوادر والمؤسسات في التنظيم الإداري والمهني</td>
+              <td><a class="btn small" href="contact.html" data-i18n="contact_direct">تواصل مباشر</a></td>
+            </tr>
+            <tr>
+              <td data-i18n="svc_ai_title">تطوير المؤسسات بالذكاء الاصطناعي</td>
+              <td data-i18n="svc_ai_desc">الانتقال إلى صفحة الخدمة الجديدة أدناه</td>
+              <td><a class="btn small" href="ai-transformation.html" data-i18n="more">المزيد</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="cards grid-2">
+      <div class="card">
+        <h3 data-i18n="svc_cv_title">تصميم السير الذاتية والخطابات المهنية</h3>
+        <p data-i18n="svc_cv_more">نماذج حديثة متوافقة مع أنظمة التوظيف ATS وإخراج احترافي.</p>
+        <div class="row">
+          <a class="btn small" href="https://wa.me/249906933335" target="_blank" rel="noopener" data-i18n="order_whatsapp">اطلب عبر واتساب</a>
+          <a class="btn small outline" href="mailto:contact@bmc-group.org">Email</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 data-i18n="svc_protocols_title">إعداد البروتوكولات والسياسات الطبية</h3>
+        <p data-i18n="svc_protocols_more">تحليل فجوات، مواءمة مع WHO ووزارة الصحة، تسليم ملفات قابلة للتطبيق.</p>
+        <a class="btn small" href="protocols.html" data-i18n="more">المزيد</a>
+      </div>
+      <div class="card">
+        <h3 data-i18n="svc_consult_title">الاستشارات المهنية</h3>
+        <p data-i18n="svc_consult_more">حزم استشارية مرنة: جلسة واحدة، شهري، أو مشروع كامل.</p>
+        <a class="btn small" href="contact.html" data-i18n="contact_direct">تواصل مباشر</a>
+      </div>
+      <div class="card">
+        <h3 data-i18n="svc_ai_title">تطوير المؤسسات بالذكاء الاصطناعي</h3>
+        <p data-i18n="svc_ai_more">خارطة طريق، سياسات، تدريب، ومشاريع تجريبية.</p>
+        <a class="btn small" href="ai-transformation.html" data-i18n="more">المزيد</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <img src="logo.svg" alt="" class="logo small" />
+        <p class="muted" data-i18n="footer_msg">BMC — وثائق مهنية، بروتوكولات طبية، وتحول ذكي.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_links">روابط</h4>
+        <ul class="list-plain">
+          <li><a href="index.html" data-i18n="nav_home">الصفحة الرئيسية</a></li>
+          <li><a href="ai-transformation.html" data-i18n="nav_ai_transform">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+          <li><a href="protocols.html" data-i18n="nav_protocols">البروتوكولات الطبية</a></li>
+          <li><a href="blog.html" data-i18n="nav_blog">المدونة</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">التواصل</h4>
+        <ul class="list-plain">
+          <li><a href="https://wa.me/249906933335" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contact@bmc-group.org">contact@bmc-group.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> BMC. All rights reserved.</small>
+    </div>
+    <a class="wa-fab" href="https://wa.me/249906933335" target="_blank" aria-label="WhatsApp">🟢</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BMC | المدونة الطبية</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="app.js"></script>
+</head>
+<body data-page="blog">
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="logo.svg" alt="BMC logo" class="logo">
+      <span class="brand-text" data-i18n="brand">Best Medical Community (BMC)</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a data-i18n="nav_home" href="index.html">الصفحة الرئيسية</a></li>
+        <li><a data-i18n="nav_services" href="services.html">الخدمات المهنية</a></li>
+        <li><a data-i18n="nav_ai_transform" href="ai-transformation.html">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+        <li><a data-i18n="nav_protocols" href="protocols.html">البروتوكولات الطبية</a></li>
+        <li><a data-i18n="nav_ai_healthcare" href="ai-healthcare.html">الذكاء الاصطناعي في الطب</a></li>
+        <li><a data-i18n="nav_blog" href="blog.html" class="active">المدونة</a></li>
+        <li><a data-i18n="nav_contact" href="contact.html">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button id="langToggle" class="btn secondary">EN</button>
+      <button id="themeToggle" class="btn secondary">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1 data-i18n="blog_title">المدونة الطبية</h1>
+      <p class="muted" data-i18n="blog_sub">مقالات وفيديوهات وبودكاست — تطوير مهني، بروتوكولات طبية، ذكاء اصطناعي.</p>
+    </section>
+
+    <section>
+      <div class="filter-bar">
+        <label>
+          <span data-i18n="category">التصنيف</span>
+          <select id="blogCategory">
+            <option value="all" data-i18n="all">الكل</option>
+            <option value="career" data-i18n="cat_career">تطوير مهني</option>
+            <option value="protocols" data-i18n="cat_protocols">بروتوكولات طبية</option>
+            <option value="ai" data-i18n="cat_ai">ذكاء اصطناعي</option>
+          </select>
+        </label>
+        <label>
+          <span data-i18n="search">بحث</span>
+          <input id="blogSearch" type="search" placeholder="..." />
+        </label>
+      </div>
+      <div id="blogList" class="cards grid-2"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <img src="logo.svg" alt="" class="logo small" />
+        <p class="muted" data-i18n="footer_msg">BMC — وثائق مهنية، بروتوكولات طبية، وتحول ذكي.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_links">روابط</h4>
+        <ul class="list-plain">
+          <li><a href="index.html" data-i18n="nav_home">الصفحة الرئيسية</a></li>
+          <li><a href="services.html" data-i18n="nav_services">الخدمات المهنية</a></li>
+          <li><a href="ai-transformation.html" data-i18n="nav_ai_transform">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+          <li><a href="protocols.html" data-i18n="nav_protocols">البروتوكولات الطبية</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">التواصل</h4>
+        <ul class="list-plain">
+          <li><a href="https://wa.me/249906933335" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contact@bmc-group.org">contact@bmc-group.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> BMC. All rights reserved.</small>
+    </div>
+    <a class="wa-fab" href="https://wa.me/249906933335" target="_blank" aria-label="WhatsApp">🟢</a>
+  </footer>
+</body>
+</html>

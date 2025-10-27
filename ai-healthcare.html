@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BMC | الذكاء الاصطناعي في الطب</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="app.js"></script>
+</head>
+<body data-page="ai-healthcare">
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="logo.svg" alt="BMC logo" class="logo">
+      <span class="brand-text" data-i18n="brand">Best Medical Community (BMC)</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a data-i18n="nav_home" href="index.html">الصفحة الرئيسية</a></li>
+        <li><a data-i18n="nav_services" href="services.html">الخدمات المهنية</a></li>
+        <li><a data-i18n="nav_ai_transform" href="ai-transformation.html">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+        <li><a data-i18n="nav_protocols" href="protocols.html">البروتوكولات الطبية</a></li>
+        <li><a data-i18n="nav_ai_healthcare" href="ai-healthcare.html" class="active">الذكاء الاصطناعي في الطب</a></li>
+        <li><a data-i18n="nav_blog" href="blog.html">المدونة</a></li>
+        <li><a data-i18n="nav_contact" href="contact.html">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button id="langToggle" class="btn secondary">EN</button>
+      <button id="themeToggle" class="btn secondary">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1 data-i18n="aih_title">الذكاء الاصطناعي السريري — تعريف وورش</h1>
+      <p class="muted" data-i18n="aih_sub">تعريف مبسط بالذكاء الاصطناعي، وورش عملية مع نموذج تسجيل مباشر.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="aih_def_title">تعريف مبسط</h2>
+      <p data-i18n="aih_def">الذكاء الاصطناعي في الرعاية الصحية يشمل خوارزميات تعلم الآلة، معالجة الصور والنصوص، ونظم دعم القرار السريري لتحسين الجودة والسلامة.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="aih_workshops_title">الورش التدريبية</h2>
+      <div class="cards grid-2">
+        <div class="card">
+          <h3 data-i18n="ws1_title">أساسيات الذكاء الاصطناعي للأطباء</h3>
+          <ul class="muted">
+            <li data-i18n="ws1_o1">مفاهيم أساسية وتطبيقات عملية.</li>
+            <li data-i18n="ws1_o2">أمثلة سريرية ونماذج مصغرة.</li>
+            <li data-i18n="ws1_o3">مدة: 6 ساعات.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 data-i18n="ws2_title">بناء CDSS باستخدام أدوات مفتوحة المصدر</h3>
+          <ul class="muted">
+            <li data-i18n="ws2_o1">تصميم المسارات السريرية.</li>
+            <li data-i18n="ws2_o2">تقييم الأداء والاعتماد.</li>
+            <li data-i18n="ws2_o3">مدة: يومان.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="aih_register_title">نموذج التسجيل</h2>
+      <form class="form" action="mailto:contact@bmc-group.org" method="post" enctype="text/plain">
+        <div class="grid-2">
+          <label>
+            <span data-i18n="name">الاسم الكامل</span>
+            <input required name="name" type="text" />
+          </label>
+          <label>
+            <span data-i18n="email">البريد الإلكتروني</span>
+            <input required name="email" type="email" />
+          </label>
+        </div>
+        <label>
+          <span data-i18n="phone">رقم الجوال</span>
+          <input name="phone" type="tel" />
+        </label>
+        <label>
+          <span data-i18n="workshop">اختيار الورشة</span>
+          <select name="workshop">
+            <option data-i18n="ws1_title">أساسيات الذكاء الاصطناعي للأطباء</option>
+            <option data-i18n="ws2_title">بناء CDSS باستخدام أدوات مفتوحة المصدر</option>
+          </select>
+        </label>
+        <label>
+          <span data-i18n="message">رسالتك</span>
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <button class="btn primary" type="submit" data-i18n="submit">إرسال</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <img src="logo.svg" alt="" class="logo small" />
+        <p class="muted" data-i18n="footer_msg">BMC — وثائق مهنية، بروتوكولات طبية، وتحول ذكي.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_links">روابط</h4>
+        <ul class="list-plain">
+          <li><a href="index.html" data-i18n="nav_home">الصفحة الرئيسية</a></li>
+          <li><a href="services.html" data-i18n="nav_services">الخدمات المهنية</a></li>
+          <li><a href="ai-transformation.html" data-i18n="nav_ai_transform">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+          <li><a href="blog.html" data-i18n="nav_blog">المدونة</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">التواصل</h4>
+        <ul class="list-plain">
+          <li><a href="https://wa.me/249906933335" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contact@bmc-group.org">contact@bmc-group.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> BMC. All rights reserved.</small>
+    </div>
+    <a class="wa-fab" href="https://wa.me/249906933335" target="_blank" aria-label="WhatsApp">🟢</a>
+  </footer>
+</body>
+</html>

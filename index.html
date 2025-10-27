@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BMC | Best Medical Community</title>
+  <meta name="description" content="نساعد الأفراد والمؤسسات على الارتقاء بالممارسات الطبية عبر الوثائق المهنية والتحول الذكي." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="logo.svg" alt="BMC logo" class="logo">
+      <span class="brand-text" data-i18n="brand">Best Medical Community (BMC)</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a data-i18n="nav_home" href="index.html" class="active">الصفحة الرئيسية</a></li>
+        <li><a data-i18n="nav_services" href="services.html">الخدمات المهنية</a></li>
+        <li><a data-i18n="nav_ai_transform" href="ai-transformation.html">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+        <li><a data-i18n="nav_protocols" href="protocols.html">البروتوكولات الطبية</a></li>
+        <li><a data-i18n="nav_ai_healthcare" href="ai-healthcare.html">الذكاء الاصطناعي في الطب</a></li>
+        <li><a data-i18n="nav_blog" href="blog.html">المدونة</a></li>
+        <li><a data-i18n="nav_contact" href="contact.html">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button id="langToggle" class="btn secondary" aria-label="Toggle language">EN</button>
+      <button id="themeToggle" class="btn secondary" aria-label="Toggle theme">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 data-i18n="hero_title">نساعد الأفراد والمؤسسات على الارتقاء بالممارسات الطبية عبر الوثائق المهنية والتحول الذكي.</h1>
+        <div class="hero-actions">
+          <a class="btn primary" href="services.html" data-i18n="cta_services">استكشف الخدمات المهنية</a>
+          <a class="btn outline" href="ai-transformation.html" data-i18n="cta_ai">ابدأ تطوير مؤسستك الآن</a>
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <svg viewBox="0 0 400 220" role="img">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--brand)" />
+              <stop offset="1" stop-color="var(--brand-2)" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="400" height="220" rx="16" fill="url(#g1)" opacity="0.15"></rect>
+          <g transform="translate(30,40)">
+            <circle cx="40" cy="40" r="28" fill="var(--brand)" opacity="0.2"/>
+            <rect x="90" y="10" width="240" height="16" rx="8" fill="var(--text)"/>
+            <rect x="90" y="40" width="200" height="12" rx="6" fill="var(--text-2)"/>
+            <rect x="0" y="90" width="330" height="8" rx="4" fill="var(--text-2)" opacity="0.6"/>
+            <rect x="0" y="110" width="280" height="8" rx="4" fill="var(--text-2)" opacity="0.4"/>
+            <rect x="0" y="130" width="310" height="8" rx="4" fill="var(--text-2)" opacity="0.5"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <h2 data-i18n="quick_title">روابط رئيسية</h2>
+      <div class="cards grid-2">
+        <a class="card" href="services.html">
+          <h3 data-i18n="nav_services">الخدمات المهنية</h3>
+          <p data-i18n="quick_services_desc">حلول عملية لتطوير المسار المهني للأطباء والكوادر الصحية.</p>
+        </a>
+        <a class="card" href="protocols.html">
+          <h3 data-i18n="nav_protocols">البروتوكولات الطبية</h3>
+          <p data-i18n="quick_protocols_desc">تصميم بروتوكولات وسياسات متوافقة مع معايير منظمة الصحة العالمية.</p>
+        </a>
+        <a class="card" href="ai-transformation.html">
+          <h3 data-i18n="nav_ai_transform">تطوير المؤسسات بالذكاء الاصطناعي</h3>
+          <p data-i18n="quick_ai_desc">تحول رقمي ذكي للصحة والتعليم والحوكمة.</p>
+        </a>
+        <a class="card" href="ai-healthcare.html">
+          <h3 data-i18n="nav_ai_healthcare">الذكاء الاصطناعي في الطب</h3>
+          <p data-i18n="quick_ai_healthcare_desc">تعريف، ورش تدريبية، ونماذج تسجيل.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="services-preview">
+      <h2 data-i18n="services_preview_title">خدمات مختارة</h2>
+      <div class="cards grid-2">
+        <div class="card">
+          <h3 data-i18n="svc_cv_title">تصميم السير الذاتية والخطابات المهنية</h3>
+          <p data-i18n="svc_cv_desc">إعداد سيرة ذاتية وخطابات توصية احترافية للأطباء والكوادر الصحية.</p>
+          <a class="btn small" href="https://wa.me/249906933335" target="_blank" rel="noopener" data-i18n="order_whatsapp">اطلب عبر واتساب</a>
+        </div>
+        <div class="card">
+          <h3 data-i18n="svc_protocols_title">إعداد البروتوكولات والسياسات الطبية</h3>
+          <p data-i18n="svc_protocols_desc">تطوير بروتوكولات لجميع الأقسام وفق معايير WHO.</p>
+          <a class="btn small" href="protocols.html" data-i18n="more">المزيد</a>
+        </div>
+        <div class="card">
+          <h3 data-i18n="svc_consult_title">الاستشارات المهنية</h3>
+          <p data-i18n="svc_consult_desc">دعم الكوادر والمؤسسات في التنظيم الإداري والمهني.</p>
+          <a class="btn small" href="contact.html" data-i18n="contact_direct">تواصل مباشر</a>
+        </div>
+        <div class="card">
+          <h3 data-i18n="svc_ai_title">تطوير المؤسسات بالذكاء الاصطناعي</h3>
+          <p data-i18n="svc_ai_desc">انتقل إلى صفحة الخدمة الجديدة للتفاصيل.</p>
+          <a class="btn small" href="ai-transformation.html" data-i18n="more">المزيد</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="news">
+      <div class="section-head">
+        <h2 data-i18n="news_title">الأخبار الطبية</h2>
+        <span class="muted" data-i18n="news_note">مصدر وهمي قابل للاستبدال لاحقاً بـ API حقيقي</span>
+      </div>
+      <div id="newsFeed" class="news-list" role="list" aria-live="polite"></div>
+    </section>
+
+    <section class="testimonials">
+      <h2 data-i18n="testimonials_title">آراء العملاء</h2>
+      <div class="cards grid-2">
+        <blockquote class="card">
+          <p data-i18n="t1">خدمة احترافية وسريعة ساعدتنا في تنظيم بروتوكولات الطوارئ.</p>
+          <footer>— مستشفى الرعاية</footer>
+        </blockquote>
+        <blockquote class="card">
+          <p data-i18n="t2">التحول الذكي حسّن مؤشرات الأداء لدينا خلال 3 أشهر.</p>
+          <footer>— إدارة التعليم الطبي</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="cta-wide">
+      <h3 data-i18n="cta_bottom_title">جاهز للارتقاء بمؤسستك؟</h3>
+      <a class="btn primary" href="ai-transformation.html" data-i18n="cta_ai">ابدأ تطوير مؤسستك الآن</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <img src="logo.svg" alt="" class="logo small" />
+        <p class="muted" data-i18n="footer_msg">BMC — وثائق مهنية، بروتوكولات طبية، وتحول ذكي.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_links">روابط</h4>
+        <ul class="list-plain">
+          <li><a href="services.html" data-i18n="nav_services">الخدمات المهنية</a></li>
+          <li><a href="protocols.html" data-i18n="nav_protocols">البروتوكولات الطبية</a></li>
+          <li><a href="ai-transformation.html" data-i18n="nav_ai_transform">تطوير المؤسسات بالذكاء الاصطناعي</a></li>
+          <li><a href="blog.html" data-i18n="nav_blog">المدونة</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">التواصل</h4>
+        <ul class="list-plain">
+          <li><a href="https://wa.me/249906933335" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contact@bmc-group.org">contact@bmc-group.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> BMC. All rights reserved.</small>
+    </div>
+    <a class="wa-fab" href="https://wa.me/249906933335" target="_blank" aria-label="WhatsApp">🟢</a>
+  </footer>
+</body>
+</html>
