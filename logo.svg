@@ -1,0 +1,6 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="500" cy="500" r="500" fill="#1A3B4A"/>
+    <path d="M500 240L500 370L600 325L500 240Z" fill="#71D9C0"/>
+    <path d="M500 760L500 630L400 675L500 760Z" fill="#71D9C0"/>
+    <text x="50%" y="535" font-family="Arial" font-size="250" font-weight="bold" fill="white" text-anchor="middle">BMC</text>
+</svg>
