@@ -31,7 +31,9 @@
   // Language toggle and i18n
   const langKey = 'bmc_lang';
   const i18n = getI18nMap();
-  let lang = localStorage.getItem(langKey) || document.documentElement.lang || 'ar';
+
+  // Ensure persisted language is applied on every page load
+  let lang = localStorage.getItem(langKey) || (document.documentElement.lang || 'ar');
   applyLang(lang);
 
   const langBtn = document.getElementById('langToggle');
@@ -47,9 +49,11 @@
     const dir = (l === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = l;
     document.documentElement.setAttribute('dir', dir);
+
     // Update toggle button label
     if (langBtn) langBtn.textContent = (l === 'ar') ? 'EN' : 'ع';
-    // Swap nav labels and all i18n tags
+
+    // Update all i18n-tagged elements
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const key = el.getAttribute('data-i18n');
       const text = i18n[l][key];
@@ -57,24 +61,29 @@
         el.textContent = text;
       }
     });
-    // Update placeholders for inputs if needed
+
+    // Update placeholders
     const search = document.getElementById('blogSearch');
     if (search){
       search.placeholder = (l === 'ar') ? '...' : 'Search...';
     }
-    // Update page titles
+
+    // Page titles map
     const titles = {
       home: { ar: 'BMC | الرئيسية', en: 'BMC | Home' },
       services: { ar: 'BMC | الخدمات المهنية', en: 'BMC | Professional Services' },
       'ai-transform': { ar: 'BMC | تطوير المؤسسات بالذكاء الاصطناعي', en: 'BMC | AI Transformation Services' },
       protocols: { ar: 'BMC | البروتوكولات الطبية', en: 'BMC | Medical Protocols' },
-      'ai-healthcare': { ar: 'BMC | الذكاء الاصطناعي في الطب', en: 'BMC | AI in Healthcare' },
+      courses: { ar: 'BMC | الكورسات الطبية والمهنية', en: 'BMC | Medical & Professional Courses' },
       blog: { ar: 'BMC | المدونة الطبية', en: 'BMC | BMC Blog' },
       contact: { ar: 'BMC | تواصل معنا', en: 'BMC | Contact' },
     };
     const pageId = body.getAttribute('data-page');
     if (titles[pageId]) document.title = titles[pageId][l];
-    // Adjust table text-align in LTR via CSS already
+
+    // Render dynamic sections that depend on language
+    renderCourses(); // safe to call on all pages; no-op if container missing
+    renderBlog();    // re-render blog if present
   }
 
   function getI18nMap(){
@@ -85,7 +94,7 @@
         nav_services: 'الخدمات المهنية',
         nav_ai_transform: 'تطوير المؤسسات بالذكاء الاصطناعي',
         nav_protocols: 'البروتوكولات الطبية',
-        nav_ai_healthcare: 'الذكاء الاصطناعي في الطب',
+        nav_courses: 'الكورسات الطبية والمهنية',
         nav_blog: 'المدونة',
         nav_contact: 'تواصل معنا',
 
@@ -97,7 +106,7 @@
         quick_services_desc: 'حلول عملية لتطوير المسار المهني للأطباء والكوادر الصحية.',
         quick_protocols_desc: 'تصميم بروتوكولات وسياسات متوافقة مع معايير منظمة الصحة العالمية.',
         quick_ai_desc: 'تحول رقمي ذكي للصحة والتعليم والحوكمة.',
-        quick_ai_healthcare_desc: 'تعريف، ورش تدريبية، ونماذج تسجيل.',
+        quick_courses_desc: 'كورسات معتمدة مختصرة مع مشاريع تطبيقية وشهادات.',
 
         services_preview_title: 'خدمات مختارة',
         svc_cv_title: 'تصميم السير الذاتية والخطابات المهنية',
@@ -133,7 +142,7 @@
         services_table_caption: 'جدول الخدمات المهنية',
         service: 'الخدمة', description: 'الوصف', order: 'طريقة الطلب',
 
-        ai_page_title: 'تطوير المؤسسات الصحية والأكاديمية لتبنّي الذكاء الاصطناعي بكفاءة',
+        ai_page_title: 'تطوير المؤسسات الصحية والأكاديمية لتبني الذكاء الاصطناعي بكفاءة',
         ai_page_sub: 'استشارات متخصصة لتحقيق التحول الرقمي في الإدارة والتعليم والرعاية الصحية.',
         ai_desc_title: '1) وصف الخدمة',
         ai_desc: 'نقدم استشارات للمنشآت الصحية والجامعات والمعاهد والوزارات لتبني حلول الذكاء الاصطناعي ودمجها في العمليات بفعالية.',
@@ -189,34 +198,38 @@
         cta_protocols:'اطلب عرضاً لصياغة بروتوكولات مخصصة لقسمك',
         contact_us:'تواصل معنا',
 
-        aih_title:'الذكاء الاصطناعي السريري — تعريف وورش',
-        aih_sub:'تعريف مبسط بالذكاء الاصطناعي، وورش عملية مع نموذج تسجيل مباشر.',
-        aih_def_title:'تعريف مبسط',
-        aih_def:'الذكاء الاصطناعي في الرعاية الصحية يشمل خوارزميات تعلم الآلة، معالجة الصور والنصوص، ونظم دعم القرار السريري لتحسين الجودة والسلامة.',
-        aih_workshops_title:'الورش التدريبية',
-        ws1_title:'أساسيات الذكاء الاصطناعي للأطباء',
-        ws1_o1:'مفاهيم أساسية وتطبيقات عملية.',
-        ws1_o2:'أمثلة سريرية ونماذج مصغرة.',
-        ws1_o3:'مدة: 6 ساعات.',
-        ws2_title:'بناء CDSS باستخدام أدوات مفتوحة المصدر',
-        ws2_o1:'تصميم المسارات السريرية.',
-        ws2_o2:'تقييم الأداء والاعتماد.',
-        ws2_o3:'مدة: يومان.',
-        aih_register_title:'نموذج التسجيل',
-
-        blog_title:'المدونة الطبية',
-        blog_sub:'مقالات وفيديوهات وبودكاست — تطوير مهني، بروتوكولات طبية، ذكاء اصطناعي.',
-        category:'التصنيف', search:'بحث', all:'الكل',
-        cat_career:'تطوير مهني', cat_protocols:'بروتوكولات طبية', cat_ai:'ذكاء اصطناعي',
-
-        contact_title:'تواصل معنا',
-        contact_sub:'نسعد بخدمتك — أرسل طلبك أو راسلنا مباشرة.',
-        name:'الاسم الكامل', email:'البريد الإلكتروني', phone:'رقم الجوال',
-        service_type:'نوع الخدمة', other:'أخرى', message:'رسالتك',
-        send:'إرسال', reset:'إعادة ضبط',
-        direct_contact:'تواصل مباشر', customer_reviews:'تقييمات العملاء',
-        r1:'★★★★★ تنظيم احترافي وسريع الاستجابة.',
-        r2:'★★★★★ جودة محتوى وسياسات قابلة للتطبيق.',
+        // Courses
+        courses_title: 'الكورسات الطبية والمهنية',
+        courses_sub: 'كورسات مختصرة عملية مع شهادات — الطلب عبر واتساب أو الإيميل فقط.',
+        courses_note: 'لطلب أي كورس أو شهادة، راسلنا عبر واتساب أو البريد.',
+        course_btn_whatsapp: 'اطلب عبر واتساب',
+        course_btn_email: 'Email',
+        course_list: [
+          {
+            title: 'أساسيات الطوارئ السريرية (ER Essentials)',
+            desc: 'مبادئ الفرز، الإنعاش، مسارات إدارة الحالات الحرجة. مدة 8 ساعات مع دراسة حالة.',
+          },
+          {
+            title: 'مكافحة العدوى للممارسين',
+            desc: 'سياسات النظافة، احتياطات العزل، وسلامة الإجراءات. مدة 6 ساعات مع اختبار قصير.',
+          },
+          {
+            title: 'أساسيات العناية المكثفة',
+            desc: 'تهوية ميكانيكية، سوائل وأدوية، ومراقبة متقدمة. مدة يوم واحد.',
+          },
+          {
+            title: 'إدارة الجودة وسلامة المرضى',
+            desc: 'مؤشرات الجودة، إدارة المخاطر، والتحسين المستمر. مشروع تطبيقي قصير.',
+          },
+          {
+            title: 'المهارات المهنية للأطباء',
+            desc: 'كتابة السيرة الذاتية، رسائل التوصية، والمراسلات المهنية. ورشة عملية.',
+          },
+          {
+            title: 'التوثيق الطبي والسياسات',
+            desc: 'كيفية صياغة السياسات والبروتوكولات وفق المعايير. تسليم قوالب قابلة للتعديل.',
+          }
+        ],
       },
       en: {
         brand: 'Best Medical Community (BMC)',
@@ -224,7 +237,7 @@
         nav_services: 'Professional Services',
         nav_ai_transform: 'AI Transformation Services',
         nav_protocols: 'Medical Protocols',
-        nav_ai_healthcare: 'AI in Healthcare',
+        nav_courses: 'Medical & Professional Courses',
         nav_blog: 'Blog',
         nav_contact: 'Contact',
 
@@ -236,7 +249,7 @@
         quick_services_desc: 'Practical solutions for healthcare professionals’ career development.',
         quick_protocols_desc: 'Design of protocols and policies aligned with WHO standards.',
         quick_ai_desc: 'Smart digital transformation for health, education, and governance.',
-        quick_ai_healthcare_desc: 'Definition, training workshops, and registration forms.',
+        quick_courses_desc: 'Accredited short courses with hands-on projects and certificates.',
 
         services_preview_title: 'Featured Services',
         svc_cv_title: 'CV Design and Professional Letters',
@@ -328,40 +341,44 @@
         cta_protocols:'Request a tailored protocols package for your department',
         contact_us:'Contact us',
 
-        aih_title:'Clinical AI — Overview and Workshops',
-        aih_sub:'A simple overview of AI with hands-on workshops and registration.',
-        aih_def_title:'Simple Definition',
-        aih_def:'AI in healthcare includes ML algorithms, imaging/NLP, and CDSS to improve quality and safety.',
-        aih_workshops_title:'Training Workshops',
-        ws1_title:'AI Fundamentals for Clinicians',
-        ws1_o1:'Core concepts and practical applications.',
-        ws1_o2:'Clinical examples and mini projects.',
-        ws1_o3:'Duration: 6 hours.',
-        ws2_title:'Building CDSS with Open-Source Tools',
-        ws2_o1:'Design clinical pathways.',
-        ws2_o2:'Performance evaluation and accreditation.',
-        ws2_o3:'Duration: 2 days.',
-        aih_register_title:'Registration Form',
-
-        blog_title:'BMC Blog',
-        blog_sub:'Articles, videos, and podcasts — Career, Protocols, AI.',
-        category:'Category', search:'Search', all:'All',
-        cat_career:'Career Development', cat_protocols:'Medical Protocols', cat_ai:'Artificial Intelligence',
-
-        contact_title:'Contact',
-        contact_sub:'We are glad to help — send your request or contact us directly.',
-        name:'Full Name', email:'Email', phone:'Phone',
-        service_type:'Service Type', other:'Other', message:'Message',
-        send:'Send', reset:'Reset',
-        direct_contact:'Direct Contact', customer_reviews:'Customer Reviews',
-        r1:'★★★★★ Professional, responsive organization.',
-        r2:'★★★★★ High-quality, actionable policies.',
+        // Courses
+        courses_title: 'Medical & Professional Courses',
+        courses_sub: 'Short, practical courses with certificates — order via WhatsApp or email only.',
+        courses_note: 'To request any course or certificate, contact us via WhatsApp or email.',
+        course_btn_whatsapp: 'Order via WhatsApp',
+        course_btn_email: 'Email',
+        course_list: [
+          {
+            title: 'Clinical Emergency Essentials (ER)',
+            desc: 'Triage basics, resuscitation, critical pathways. 8 hours with case study.',
+          },
+          {
+            title: 'Infection Prevention for Practitioners',
+            desc: 'Hand hygiene policies, isolation precautions, procedure safety. 6 hours with quiz.',
+          },
+          {
+            title: 'ICU Fundamentals',
+            desc: 'Mechanical ventilation, fluids and meds, advanced monitoring. 1-day course.',
+          },
+          {
+            title: 'Quality Management & Patient Safety',
+            desc: 'Quality indicators, risk management, continuous improvement. Short applied project.',
+          },
+          {
+            title: 'Professional Skills for Physicians',
+            desc: 'CV writing, recommendation letters, professional correspondence. Hands-on workshop.',
+          },
+          {
+            title: 'Medical Documentation & Policies',
+            desc: 'How to draft policies/protocols per standards. Editable templates included.',
+          }
+        ],
       }
     };
   }
 
   // News mock fetch (replaceable API)
-  const NEWS_API_URL = 'news.json'; // replace later with real API endpoint
+  const NEWS_API_URL = 'news.json';
   const newsFeed = document.getElementById('newsFeed');
   if (newsFeed){
     fetch(NEWS_API_URL).then(r=>r.json()).then(items=>{
@@ -389,34 +406,40 @@
 
   // Blog mock list
   const blogList = document.getElementById('blogList');
-  if (blogList){
+  function renderBlog(){
+    if (!blogList) return;
     const posts = [
       { id:1, title:{ar:'كيف تجعل سيرتك الذاتية متوافقة مع ATS',en:'Make Your CV ATS-Friendly'}, cat:'career', excerpt:{ar:'خطوات عملية ونماذج جاهزة.',en:'Practical steps and templates.'}},
       { id:2, title:{ar:'بروتوكولات الطوارئ: أفضل الممارسات',en:'ER Protocols: Best Practices'}, cat:'protocols', excerpt:{ar:'منهجية تطبيقية مختصرة.',en:'A concise applied methodology.'}},
       { id:3, title:{ar:'CDSS: من الفكرة إلى التجربة',en:'CDSS: From Idea to Pilot'}, cat:'ai', excerpt:{ar:'خارطة طريق مختصرة.',en:'A concise roadmap.'}},
     ];
-    const lang = localStorage.getItem(langKey) || 'ar';
-    const render = ()=>{
-      const filter = document.getElementById('blogCategory').value;
-      const q = (document.getElementById('blogSearch').value || '').toLowerCase();
-      blogList.innerHTML = '';
-      posts.filter(p => (filter==='all'||p.cat===filter) && (p.title[lang].toLowerCase().includes(q) || p.excerpt[lang].toLowerCase().includes(q)))
-        .forEach(p=>{
-          const card = document.createElement('article');
-          card.className = 'card';
-          card.innerHTML = `
-            <h3>${p.title[lang]}</h3>
-            <p class="muted">${p.excerpt[lang]}</p>
-            <div class="row">
-              <a class="btn small outline" href="#" aria-disabled="true">Read</a>
-            </div>
-          `;
-          blogList.appendChild(card);
-        });
-    };
-    document.getElementById('blogCategory').addEventListener('change', render);
-    document.getElementById('blogSearch').addEventListener('input', render);
-    render();
+    const currentLang = document.documentElement.lang || 'ar';
+    const categorySel = document.getElementById('blogCategory');
+    const searchInp = document.getElementById('blogSearch');
+
+    const filter = categorySel ? categorySel.value : 'all';
+    const q = (searchInp ? searchInp.value : '').toLowerCase();
+
+    blogList.innerHTML = '';
+    posts
+      .filter(p => (filter==='all'||p.cat===filter) && (p.title[currentLang].toLowerCase().includes(q) || p.excerpt[currentLang].toLowerCase().includes(q)))
+      .forEach(p=>{
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <h3>${p.title[currentLang]}</h3>
+          <p class="muted">${p.excerpt[currentLang]}</p>
+          <div class="row">
+            <a class="btn small outline" href="#" aria-disabled="true">${currentLang==='ar'?'قراءة':'Read'}</a>
+          </div>
+        `;
+        blogList.appendChild(card);
+      });
+  }
+  if (blogList){
+    document.getElementById('blogCategory').addEventListener('change', renderBlog);
+    document.getElementById('blogSearch').addEventListener('input', renderBlog);
+    renderBlog();
   }
 
   // Contact form -> WhatsApp fallback (no backend)
@@ -434,4 +457,28 @@
       window.open(url, '_blank');
     });
   }
+
+  // Courses render
+  function renderCourses(){
+    const container = document.getElementById('coursesList');
+    if (!container) return;
+    const lang = document.documentElement.lang || 'ar';
+    const map = getI18nMap(); // new instance for safety; could be optimized
+    const list = map[lang].course_list;
+    container.innerHTML = '';
+    list.forEach(item=>{
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="muted">${item.desc}</p>
+        <div class="row">
+          <a class="btn small" href="https://wa.me/249906933335?text=${encodeURIComponent('Course Request: '+item.title)}" target="_blank" rel="noopener">${map[lang].course_btn_whatsapp}</a>
+          <a class="btn small outline" href="mailto:contact@bmc-group.org?subject=${encodeURIComponent('Course Request: '+item.title)}">${map[lang].course_btn_email}</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+  renderCourses();
 })();
